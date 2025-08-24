@@ -79,12 +79,12 @@ The trained model `disease_detector.h5` (~271 MB) is hosted externally due to Gi
 1. Download the `disease_detector.h5` file from the link above.
 2. Place the file in the `backend/` folder of the MangoMedix project.
 3. Run the web application as usual:
-```bash
-python backend/app.py
+   
+  python backend/app.py
 
 ---
 
-Demo
+## Demo
 
 Watch the MangoMedix web app in action:
 
@@ -100,7 +100,7 @@ Watch the MangoMedix web app in action:
 
 ---
 
-🚀 Future Improvements
+## 🚀 Future Improvements
 
 - Expand dataset to include more diseases
 - Mobile-friendly version for farmers
@@ -110,7 +110,7 @@ Watch the MangoMedix web app in action:
 
 ---
 
-📜 License
+## 📜 License
 
 This project is licensed under the MIT License.
 
