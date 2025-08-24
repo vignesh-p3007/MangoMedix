@@ -35,22 +35,22 @@ With an accuracy of **92%**, it empowers farmers and researchers with **real-tim
 ## ⚙️ Setup Instructions
 
 1. **Clone the repository**
-     git clone https://github.com/vignesh-p3007/MangoMedix.git
-     cd MangoMedix
+   - git clone https://github.com/vignesh-p3007/MangoMedix.git
+   - cd MangoMedix
 
 2. **Create a virtual environment (recommended)**
-     python -m venv venv
-     source venv/bin/activate   # for Linux/Mac
-     .\venv\Scripts\activate    # for Windows
+     - python -m venv venv
+     - source venv/bin/activate   # for Linux/Mac
+     - .\venv\Scripts\activate    # for Windows
 
 3. **Install dependencies**
-      pip install -r requirements.txt
+     - pip install -r requirements.txt
 
 4. **Run the web app**
-      python backend/app.py
+      - python backend/app.py
 
 5. **Access in browser**
-      http://127.0.0.1:5000/
+      - http://127.0.0.1:5000/
     
 ---
 
