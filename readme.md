@@ -1,4 +1,4 @@
-# MangoMediX 🌿🩺  
+# 🌿MangoMediX 
 **AI-Powered Mango Leaf Disease Prediction System**  
 
 MangoMediX is a deep learning–based web application that predicts mango leaf diseases from uploaded images.  
@@ -24,34 +24,6 @@ With an accuracy of **92%**, it empowers farmers and researchers with **real-tim
 
 ---
 
-## 📂 Project Structure
-
-MANGO_LEAF_DISEASE_PREDICTION/
-│
-├── backend/
-│ ├── static/
-│ │ ├── script.js
-│ │ └── style.css
-│ ├── templates/
-│ │ └── index.html
-│ ├── uploads/ (ignored in GitHub)
-│ └── app.py
-│
-├── disease_detector.h5 (ignored in GitHub, hosted separately if >100MB)
-│
-├── saved_results/
-│ ├── evaluation_data.json
-│ └── training_history.json
-│
-├── screenshots/
-│ ├── home_page.png
-│ ├── upload_page.png
-│ └── prediction_result.png
-│
-└── requirements.txt
-
----
-
 ## 🛠️ Tech Stack
 - **Frontend:** HTML, CSS, JavaScript  
 - **Backend:** Python, Flask, Flask-CORS  
@@ -63,22 +35,22 @@ MANGO_LEAF_DISEASE_PREDICTION/
 ## ⚙️ Setup Instructions
 
 1. **Clone the repository**
-   git clone https://github.com/vignesh-p3007/MangoMedix.git
-   cd MangoMedix
+   - git clone https://github.com/vignesh-p3007/MangoMedix.git
+   - cd MangoMedix
 
 2. **Create a virtual environment (recommended)**
-    python -m venv venv
-    source venv/bin/activate   # for Linux/Mac
-    .\venv\Scripts\activate    # for Windows
+     - python -m venv venv
+     - source venv/bin/activate   # for Linux/Mac
+     - .\venv\Scripts\activate    # for Windows
 
 3. **Install dependencies**
-    pip install -r requirements.txt
+     - pip install -r requirements.txt
 
 4. **Run the web app**
-    python backend/app.py
+      - python backend/app.py
 
 5. **Access in browser**
-    http://127.0.0.1:5000/
+      - http://127.0.0.1:5000/
     
 ---
 
@@ -95,13 +67,32 @@ Here are some screenshots of the MangoMedix web application:
 ### 3. Prediction Result
 ![Prediction Result](screenshots/prediction_result.png)
 
-### 4. Training History & Evaluation Metrics
-![Training History](screenshots/training_history.png)
+---
 
+### Pre-trained Model
+
+The trained model `disease_detector.h5` (~271 MB) is hosted externally due to GitHub file size limits.  
+
+**Download the model here:** [Google Drive Link](https://drive.google.com/file/d/1IR_KaRTu36PF7MKqXWnoakgL6z2iGNpX/view?usp=drive_link)  
+
+**Instructions:**
+1. Download the `disease_detector.h5` file from the link above.
+2. Place the file in the `backend/` folder of the MangoMedix project.
+3. Run the web application as usual:
+   
+  python backend/app.py
 
 ---
 
-📊 Results & Accuracy
+## Demo
+
+Watch the MangoMedix web app in action:
+
+**Demo Video:** [Click Here to View](https://drive.google.com/file/d/1vjyj6GXkkCFYufw_3UGDOo0Vt-6c4dT2/view?usp=drive_link)
+
+---
+
+## 📊 Results & Accuracy
 
 - Achieved 92% prediction accuracy using ResNet50 with transfer learning
 - Early detection helps prevent disease spread and optimize resource usage
@@ -109,7 +100,7 @@ Here are some screenshots of the MangoMedix web application:
 
 ---
 
-🚀 Future Improvements
+## 🚀 Future Improvements
 
 - Expand dataset to include more diseases
 - Mobile-friendly version for farmers
@@ -119,7 +110,7 @@ Here are some screenshots of the MangoMedix web application:
 
 ---
 
-📜 License
+## 📜 License
 
 This project is licensed under the MIT License.
 
