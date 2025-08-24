@@ -92,7 +92,7 @@ Watch the MangoMedix web app in action:
 
 ---
 
-📊 Results & Accuracy
+## 📊 Results & Accuracy
 
 - Achieved 92% prediction accuracy using ResNet50 with transfer learning
 - Early detection helps prevent disease spread and optimize resource usage
