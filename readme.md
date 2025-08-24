@@ -69,6 +69,29 @@ Here are some screenshots of the MangoMedix web application:
 
 ---
 
+### Pre-trained Model
+
+The trained model `disease_detector.h5` (~271 MB) is hosted externally due to GitHub file size limits.  
+
+**Download the model here:** [Google Drive Link](https://drive.google.com/file/d/1IR_KaRTu36PF7MKqXWnoakgL6z2iGNpX/view?usp=drive_link)  
+
+**Instructions:**
+1. Download the `disease_detector.h5` file from the link above.
+2. Place the file in the `backend/` folder of the MangoMedix project.
+3. Run the web application as usual:
+```bash
+python backend/app.py
+
+---
+
+Demo
+
+Watch the MangoMedix web app in action:
+
+**Demo Video:** [Click Here to View](https://drive.google.com/file/d/1vjyj6GXkkCFYufw_3UGDOo0Vt-6c4dT2/view?usp=drive_link)
+
+---
+
 📊 Results & Accuracy
 
 - Achieved 92% prediction accuracy using ResNet50 with transfer learning
