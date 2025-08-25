@@ -12,8 +12,8 @@ app = Flask(__name__)
 CORS(app)
 
 # Google Drive model file
-MODEL_URL = "https://drive.google.com/uc?id=1IR_KaRTu36PF7MKqXWnoakgL6z2iGNpX"
-MODEL_PATH = "disease_detector.h5"
+MODEL_URL = "https://drive.google.com/file/d/1XaKARuL5HE9cZdvGKUKmNqjYrnWLzqdp/view?usp=drive_link"
+MODEL_PATH = "disease_detector.keras"
 
 if not os.path.exists(MODEL_PATH):
     print("Downloading model from Google Drive...")

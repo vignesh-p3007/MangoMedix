@@ -3,6 +3,7 @@ backend/uploads/
 
 # Ignore model files
 *.h5
+*.keras
 
 # Ignore Python cache
 __pycache__/
