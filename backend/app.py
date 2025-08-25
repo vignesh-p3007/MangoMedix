@@ -11,16 +11,17 @@ import gdown
 app = Flask(__name__)
 CORS(app)
 
-# Google Drive model file
-MODEL_URL = "https://drive.google.com/file/d/1XaKARuL5HE9cZdvGKUKmNqjYrnWLzqdp/view?usp=drive_link"
+# Google Drive model file (✅ use direct download link)
+MODEL_URL = "https://drive.google.com/uc?id=1XaKARuL5HE9cZdvGKUKmNqjYrnWLzqdp"
 MODEL_PATH = "disease_detector.keras"
 
+# Download model if not exists
 if not os.path.exists(MODEL_PATH):
     print("Downloading model from Google Drive...")
     gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
 
-# Load model
-model = tf.keras.models.load_model(MODEL_PATH)
+# Load model (disable compile to avoid warnings)
+model = tf.keras.models.load_model(MODEL_PATH, compile=False)
 
 # Label map
 label_map = {
@@ -34,6 +35,7 @@ label_map = {
     7: "Sooty Mould"
 }
 
+# Allowed file types
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 def allowed_file(filename):
@@ -59,17 +61,19 @@ def predict():
             os.makedirs('uploads', exist_ok=True)
             file.save(filepath)
 
+            # Preprocess image
             img = load_img(filepath, target_size=(224, 224))
             img_array = img_to_array(img) / 255.0
             img_array = np.expand_dims(img_array, axis=0)
 
+            # Predict
             predictions = model.predict(img_array)
             predicted_class = int(np.argmax(predictions))
             confidence = float(predictions[0][predicted_class])
 
             return jsonify({
-                "predicted_class": label_map[predicted_class],
-                "confidence": confidence
+                "predicted_class": label_map.get(predicted_class, "Unknown"),
+                "confidence": round(confidence, 4)
             })
         else:
             return jsonify({"error": "Invalid file format"}), 400
