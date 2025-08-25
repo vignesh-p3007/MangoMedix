@@ -55,6 +55,11 @@ const suggestionsMap = {
     ]
 };
 
+// Auto-detect backend URL (local vs deployed)
+const backendURL = window.location.hostname.includes("localhost") || window.location.hostname.includes("127.0.0.1")
+    ? "http://127.0.0.1:5000"
+    : "https://mangomedix.onrender.com";
+
 async function predictDisease() {
     const fileInput = document.getElementById('imageInput');
     const resultDiv = document.getElementById('result');
@@ -73,7 +78,7 @@ async function predictDisease() {
     suggestionDiv.innerHTML = ""; // Clear previous suggestions
 
     try {
-        const response = await fetch('http://127.0.0.1:5000/predict', {
+        const response = await fetch(`${backendURL}/predict`, {
             method: 'POST',
             body: formData
         });
