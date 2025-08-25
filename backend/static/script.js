@@ -13,49 +13,47 @@ function displayImage(event) {
     }
 }
 
-// Suggestions mapping based on disease class
+// Suggestions mapping
 const suggestionsMap = {
     "Anthracnose": [
-        "Apply a broad-spectrum fungicide, such as copper-based fungicides, to protect unaffected leaves and fruit.",
-        "Avoid overhead watering to minimize moisture on leaves, as it encourages fungal growth.",
-        "Remove and dispose of infected leaves, branches, and fruit to reduce sources of infection."
+        "Apply a copper-based fungicide to protect leaves and fruit.",
+        "Avoid overhead watering to minimize leaf moisture.",
+        "Remove and destroy infected leaves and fruit."
     ],
     "Bacterial Canker": [
-        "Use copper-based sprays to control the spread of bacteria and protect healthy tissues.",
-        "Ensure proper irrigation practices, such as avoiding excessive water near plant roots.",
-        "Prune and destroy infected branches during dry weather to prevent bacterial spread."
+        "Use copper sprays to control bacteria.",
+        "Avoid excessive water around roots.",
+        "Prune infected branches during dry weather."
     ],
     "Cutting Weevil": [
-        "Prune and burn infected parts of the plant to eliminate breeding sites for weevils.",
-        "Apply an appropriate insecticide targeted for cutting weevils, such as carbaryl or spinosad.",
-        "Practice crop rotation and keep the surrounding area free from weeds to reduce pest habitats."
+        "Prune and burn infected parts.",
+        "Apply insecticide such as spinosad.",
+        "Practice crop rotation and remove weeds."
     ],
     "Die Back": [
-        "Prune and remove all affected branches and ensure tools are sanitized to prevent further spread.",
-        "Apply copper-based fungicides or carbendazim to prevent reinfection.",
-        "Ensure the soil is well-drained and avoid overwatering to reduce stress on the plant."
+        "Prune affected branches with sanitized tools.",
+        "Apply carbendazim or copper fungicide.",
+        "Ensure proper soil drainage."
     ],
     "Gall Midge": [
-        "Practice proper field sanitation by removing and destroying galls and infected parts.",
-        "Use biological pest control methods, such as introducing natural enemies like parasitic wasps.",
-        "Apply systemic insecticides, such as imidacloprid, during the early stages of infestation."
+        "Remove and destroy galls.",
+        "Introduce natural predators like wasps.",
+        "Use systemic insecticides in early stage."
     ],
-    "Healthy": [
-        "Your plant is healthy! Continue with regular care and enjoy its growth."
-    ],
+    "Healthy": ["Your plant is healthy! Keep up regular care."],
     "Powdery Mildew": [
-        "Apply sulfur-based fungicides or potassium bicarbonate sprays to control fungal growth.",
-        "Ensure good air circulation around plants by pruning overcrowded branches.",
-        "Avoid watering plants from above to keep leaves dry, as moisture encourages mildew."
+        "Apply sulfur-based fungicides.",
+        "Prune for better airflow.",
+        "Avoid overhead watering."
     ],
     "Sooty Mould": [
-        "Control pests such as aphids, mealybugs, or scales that produce honeydew, which supports mould growth.",
-        "Wash affected leaves with a mild soap solution or plain water to remove the sooty layer.",
-        "Apply neem oil or insecticidal soap to prevent further infestation by honeydew-producing pests."
+        "Control honeydew-producing pests.",
+        "Wash leaves with mild soap solution.",
+        "Apply neem oil or insecticidal soap."
     ]
 };
 
-// Auto-detect backend URL (local vs deployed)
+// Auto-detect backend URL
 const backendURL = window.location.hostname.includes("localhost") || window.location.hostname.includes("127.0.0.1")
     ? "http://127.0.0.1:5000"
     : "https://mangomedix.onrender.com";
@@ -67,7 +65,7 @@ async function predictDisease() {
 
     if (!fileInput.files[0]) {
         resultDiv.textContent = "Please select a mango leaf image.";
-        suggestionDiv.innerHTML = ""; // Clear previous suggestions
+        suggestionDiv.innerHTML = "";
         return;
     }
 
@@ -75,37 +73,43 @@ async function predictDisease() {
     formData.append('file', fileInput.files[0]);
 
     resultDiv.textContent = "Predicting...";
-    suggestionDiv.innerHTML = ""; // Clear previous suggestions
+    suggestionDiv.innerHTML = "";
 
     try {
         const response = await fetch(`${backendURL}/predict`, {
             method: 'POST',
             body: formData
         });
+
+        // Check content type
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+            resultDiv.textContent = "Server error: Response not in JSON format.";
+            return;
+        }
+
         const data = await response.json();
 
         if (response.ok) {
             const diseaseClass = data.predicted_class;
             const confidence = (data.confidence * 100).toFixed(2);
-            const suggestions = suggestionsMap[diseaseClass] || ["No suggestions available for this disease class."];
+            const suggestions = suggestionsMap[diseaseClass] || ["No suggestions available."];
 
-            // Display prediction result
             resultDiv.innerHTML = `
                 <p><strong>Predicted Class:</strong> ${diseaseClass}</p>
                 <p><strong>Confidence:</strong> ${confidence}%</p>
             `;
 
-            // Render suggestions as a bulleted list
             const suggestionsList = suggestions.map(item => `<li>${item}</li>`).join("");
             suggestionDiv.innerHTML = `
                 <h2>Recommended Treatment</h2>
                 <ul>${suggestionsList}</ul>
             `;
         } else {
-            resultDiv.textContent = `Error: ${data.error}`;
+            resultDiv.textContent = `Error: ${data.error || "Unknown error"}`;
         }
     } catch (error) {
         resultDiv.textContent = `Error: ${error.message}`;
-        suggestionDiv.innerHTML = ""; // Clear previous suggestions
+        suggestionDiv.innerHTML = "";
     }
 }
