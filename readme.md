@@ -88,7 +88,13 @@ The trained model `disease_detector.h5` (~271 MB) is hosted externally due to Gi
 
 Watch the MangoMedix web app in action:
 
-**Demo Video:** [Click Here to View](https://drive.google.com/file/d/1vjyj6GXkkCFYufw_3UGDOo0Vt-6c4dT2/view?usp=drive_link)
+**Demo Video:** [Click Here to View](https://drive.google.com/file/d/1vjyj6GXkkCFYufw_3UGDOo0Vt-6c4dT2/view?usp=drive_link)  
+
+---
+## 🚀 Live Demo
+
+Check out the live demo of MangoMediX here:  
+👉 [Click to View](https://huggingface.co/spaces/vignesh-p3007/MangoMediX)
 
 ---
 
