@@ -5,7 +5,7 @@ from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import os
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
-import gdown
+#import gdown
 
 # Flask app
 app = Flask(__name__)
