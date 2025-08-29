@@ -126,7 +126,7 @@ This project is licensed under the MIT License.
 
 - [Vignesh](https://www.linkedin.com/in/vignesh-p3007)  
 - [Kshitij R Amin](https://www.linkedin.com/in/kshitij-amin-9a2274208/)  
-- [Nitheesh Ishwar Naik](#)  
+- [Nitheesh Ishwar Naik](https://www.linkedin.com/in/nitheeshnaik)  
 - [Suhas S](https://www.linkedin.com/in/suhas-s-2773082a6/)  
 
 **Guided by:** Mrs. Usha C S, Assistant Professor, AJIET Mangalore
